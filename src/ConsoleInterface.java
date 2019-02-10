@@ -12,16 +12,16 @@ public class ConsoleInterface {
                 "Clear - to clear the calculator \n" +
                 "Quit - to exit the calculator\n" +
                 "Invert - to invert the sign of the value\n" +
-                "Switch Display Mode - to change the operator units\n" +
+                "Switch Base Mode - to change the operator units\n" +
                 "Set Trig Units - to set the units displayed for trig functions" +
                 "MC -  to clear the currently saved value from memory\n" +
                 "MC+ - to add the currently displayed value to memory\n" +
                 "MRC - to display the currently saved value to the console");
         while (run){
             Scanner mainScn = new Scanner(System.in);
-            String input = mainScn.nextLine().toLowerCase();
+            String input = mainScn.nextLine();
 
-            switch (input) {
+            switch (input.toLowerCase()) {
                 case "index":
                     ConsoleInterface.index();
                     break;
@@ -49,7 +49,7 @@ public class ConsoleInterface {
                     newCalc.invertCurrentValue();
                     System.out.println(newCalc.getCurrentValueAsString());
                     break;
-                case "switch display mode":
+                case "switch base mode":
                     System.out.println("Please enter the number of the base you would like to switch to switch to ");
                     int baseNum = mainScn.nextInt();
                     mainScn.nextLine();
