@@ -9,11 +9,14 @@
 
 import org.mariuszgromada.math.mxparser.*;
 
+import java.util.ArrayList;
+
 public class Calculator {
     private int base;
     private String trigUnits;
     private double memory;
     private double currentValue;
+    private static int x;
 
     public Calculator(){
         base = 10;
@@ -35,12 +38,10 @@ public class Calculator {
         } else {
             mXparser.setRadiansMode();
         }
-        //1abc2x30yz67
-        //("1", "abc", "2", "x", "30", "yz", "67")
-        // convert input string to decimal
-        // if (asdf.substring(0, 1).equals(0) ||
 
-        Expression expression = new Expression(input);
+        String convertedInput = convertExpressionToDecimal(input, this.base);
+
+        Expression expression = new Expression(convertedInput);
         this.currentValue = expression.calculate();
 
         return valueAsStringInCorrectBase(this.currentValue);
@@ -171,19 +172,45 @@ public class Calculator {
 
 
     /**
-     *
-     * @param expressionToConvert
-     * @param originalBase
-     * @return
+     * This method takes a string, expressionToConvert (e.g., "1010 + 0011101", in base originalBase (e.g., base 2)
+     * and turns it into an expression in base 10 (10.0 + 29.9) and returns that.
      */
     private static String convertExpressionToDecimal(String expressionToConvert, int originalBase){
         if (originalBase == 10){
             return expressionToConvert;
         }
 
+        String newExpression = "";
+        String tempString = "";
+        ArrayList<String> stringArray = new ArrayList();
 
+        for (int i = 0; i < expressionToConvert.length(); i++){
+            if (Character.isDigit(expressionToConvert.charAt(i)) || Character.isUpperCase(expressionToConvert.charAt(i))){
+                tempString += expressionToConvert.charAt(i);
+                if (i+1 == expressionToConvert.length() || !(Character.isDigit(expressionToConvert.charAt(i+1)) || Character.isUpperCase(expressionToConvert.charAt(i+1)))){
+                    stringArray.add(tempString);
+                    tempString = "";
+                }
+            } else {
+                tempString += expressionToConvert.charAt(i);
+                if (i+1 == expressionToConvert.length() || Character.isDigit(expressionToConvert.charAt(i+1)) || Character.isUpperCase(expressionToConvert.charAt(i+1))){
+                    stringArray.add(tempString);
+                    tempString = "";
+                }
+            }
+        }
 
-        return "";
+        for (String s : stringArray) {
+
+            if (Character.isDigit(s.charAt(0)) || Character.isUpperCase(s.charAt(0))){
+                tempString = "" + mXparser.convOthBase2Decimal(s, originalBase);
+            } else {
+                tempString = s;
+            }
+            newExpression = newExpression + tempString;
+
+        }
+        return newExpression;
     }
 
     private String valueAsStringInCorrectBase(double value){
