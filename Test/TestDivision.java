@@ -56,7 +56,7 @@ class TestDivision {
     @Test
     public void TestDivision4() {
 
-        //Input,Given,Threshold
+        //Input,Given
         String input ="0/0";
         String expected = "NaN";
 
