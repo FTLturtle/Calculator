@@ -169,11 +169,11 @@ public class Calculator {
         return "";
     }
 
-    private String convertCurrentValueToOtherBase(){
-        double resultToConvert = this.currentValue;
-        String convertedResult = mXparser.convDecimal2OthBase(resultToConvert, this.base);
-
-        return convertedResult;
+    private String currentValueAsStringInCorrectBase(){
+        if (this.base == 10){
+            return "" + this.currentValue;
+        }
+        return mXparser.convDecimal2OthBase(this.currentValue, this.base);
     }
 
 }
