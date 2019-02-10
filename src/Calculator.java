@@ -35,12 +35,15 @@ public class Calculator {
         } else {
             mXparser.setRadiansMode();
         }
+        //1abc2x30yz67
+        //("1", "abc", "2", "x", "30", "yz", "67")
+        // convert input string to decimal
+        // if (asdf.substring(0, 1).equals(0) ||
 
         Expression expression = new Expression(input);
         this.currentValue = expression.calculate();
 
-        String result = "" + this.currentValue;
-        return result;
+        return valueAsStringInCorrectBase(this.currentValue);
     }
 
     /**
@@ -48,7 +51,21 @@ public class Calculator {
      * @return
      */
     public String getCurrentValueAsString(){
-        return "" + this.currentValue;
+        return valueAsStringInCorrectBase(this.currentValue);
+    }
+
+    /**
+     *
+     */
+    public void resetCurrentValue(){
+        this.currentValue = 0;
+    }
+
+    /**
+     *
+     */
+    public void invertCurrentValue(){
+        this.currentValue = this.currentValue * -1;
     }
 
     /**
@@ -56,7 +73,7 @@ public class Calculator {
      * @return
      */
     public String getMemoryAsString(){
-        return "" + this.memory;
+        return valueAsStringInCorrectBase(this.memory);
     }
 
     /**
@@ -169,11 +186,11 @@ public class Calculator {
         return "";
     }
 
-    private String currentValueAsStringInCorrectBase(){
+    private String valueAsStringInCorrectBase(double value){
         if (this.base == 10){
-            return "" + this.currentValue;
+            return "" + value;
         }
-        return mXparser.convDecimal2OthBase(this.currentValue, this.base);
+        return mXparser.convDecimal2OthBase(value, this.base);
     }
 
 }
