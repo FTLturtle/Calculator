@@ -26,6 +26,10 @@ public class Calculator {
         this.memory = memory;
     }
 
+    public void addToCurrentMemory(double addToMemory){
+        this.memory = this.memory + addToMemory;
+    }
+
     public String getDisplayMode() {
         return displayMode;
     }
