@@ -12,8 +12,10 @@ public class ConsoleInterface {
                 "Clear - to clear the calculator \n" +
                 "Quit - to exit the calculator\n" +
                 "Invert - to invert the sign of the value\n" +
-                "Switch Base Mode - to change the operator units\n" +
-                "Set Trig Units - to set the units displayed for trig functions" +
+                "Set Base Mode - to change the current base (for example, base 2 is binary and base 8 is octal)\n" +
+                "Check Base Mode - check the current base\n" +
+                "Set Trig Units - to set the units used for trig functions (enter degrees or radians)\n" +
+                "Check Trig Units - check the current trig units being used\n" +
                 "MC -  to clear the currently saved value from memory\n" +
                 "MC+ - to add the currently displayed value to memory\n" +
                 "MRC - to display the currently saved value to the console");
@@ -49,19 +51,24 @@ public class ConsoleInterface {
                     newCalc.invertCurrentValue();
                     System.out.println(newCalc.getCurrentValueAsString());
                     break;
-                case "switch base mode":
+                case "set base mode":
                     System.out.println("Please enter the number of the base you would like to switch to switch to ");
                     int baseNum = mainScn.nextInt();
                     mainScn.nextLine();
                     newCalc.setBase(baseNum);
                     System.out.println("Your units are now changed");
                     break;
+                case "check base mode":
+                    System.out.println("Current Base: " + newCalc.getBase());
+                    break;
                 case "set trig units":
                     System.out.println("Please enter Degrees or Radians to select your desired Trig Unit");
-                    String trigUnit = mainScn.nextLine();
-                    mainScn.nextLine().toLowerCase();
+                    String trigUnit = mainScn.nextLine().toLowerCase();
                     newCalc.setTrigUnits(trigUnit);
                     System.out.println("Your units are now changed");
+                    break;
+                case "check trig units" :
+                    System.out.println("Current trig units: " + newCalc.getTrigUnits());
                     break;
                 case "mc":
                     newCalc.resetMemory();
