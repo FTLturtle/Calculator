@@ -12,34 +12,25 @@ import org.mariuszgromada.math.mxparser.*;
 public class ConsoleInterface {
 
     /**
-     * This is the main method for the ConsoleInterface class. This is the only method that is called from the main
-     * method. It declares and initializes a Calculator object. It prints out instructions and asks the user to input
-     * a command or a mathematical expression. If they input a command, it executes the command. If they input a
-     * mathematical expression (for example (3 + 5) * 8) then it will send that expression to the calculator to
-     * evaluate, and then give the user back the result.
+     * This is the only public method for the ConsoleInterface class and the only method that is called from the main
+     * method. It prints out the welcome message and instructions and then runs the active display allowing the user
+     * to interact with the calculator.
      */
     public static void display() {
+        displayWelcome(); // displays welcome message
+        activeDisplay(); // runs a while loop to check for user input. Doesn't stop running until user enters the
+    }
+
+    /**
+     * This is the active display. It runs a while loop that checks for user input, allowing the user to use the
+     * calculator. It declares and initializes a Calculator object. If they input a command, it executes the command.
+     * If they input a mathematical expression (for example (3 + 5) * 8) then it will send that expression to the
+     * calculator to evaluate, and then give the user back the result.
+     */
+    private static void activeDisplay(){
         boolean run = true;
         Calculator newCalc = new Calculator();
 
-        System.out.println("Welcome to the calculator, enter a mathematical expression or enter one of the following commands: \n" +
-                "Index - to print an index of available computations \n" +
-                "Search - to check if your desired computation is available \n" +
-                "Clear - to clear the calculator \n" +
-                "Quit - to exit the calculator\n" +
-                "Invert - to invert the sign of the value\n" +
-                "Set Base Mode - to set the current base between 1 and 36 (base 2 is binary, base 8 is octal, etc.) - default is 10\n" +
-                "Check Base Mode - check the current base\n" +
-                "NOTE: If you are working in a base above 10, use uppercase letters to represent the higher digits\n" +
-                "Set Trig Units - to set the units used for trig functions (degrees or radians) - default is radians\n" +
-                "Check Trig Units - check the current trig units being used\n" +
-                "MC -  to clear the currently saved value from memory\n" +
-                "MC+ - to add the currently displayed value to memory\n" +
-                "MRC - to display the currently saved value to the console\n\n" +
-                "Instructions: To use the calculator, enter a mathematical expression, for example: (3 + 5) * 8 * sin(pi/2)\n" +
-                "The calculator will evaluate your expression and tell you the result. The example above\n" +
-                "would give you an answer of 64. Enter 'Index' for a list of available computations. Check\n" +
-                "above for other available commands. An invalid expression will return NaN.\n");
         while (run){
             System.out.println("Enter a mathematical expression or enter one of the commands listed in the welcome message");
             Scanner mainScn = new Scanner(System.in);
@@ -107,6 +98,9 @@ public class ConsoleInterface {
                     newCalc.addCurrentValueToMemory();
                     System.out.println("Value has been saved");
                     break;
+                case "welcome":
+                    displayWelcome();
+                    break;
                 default:
                     System.out.println(newCalc.calc(input));
             }
@@ -116,7 +110,7 @@ public class ConsoleInterface {
     /**
      * This prints out the index of all available computations
      */
-    public static void index(){
+    private static void index(){
         mXparser.consolePrintHelp();
 
     }
@@ -124,9 +118,38 @@ public class ConsoleInterface {
     /**
      * This will clear the screen by inputting 60 newlines
      */
-    public static void clearCommand(){
-        for(int i = 0; i < 60; i++);
-        System.out.println();
+    private static void clearCommand(){
+        for(int i = 0; i < 60; i++) {
+            System.out.println();
+        }
     }
+
+    /**
+     * This method displays the welcome message
+     */
+    private static void displayWelcome(){
+        System.out.println("Welcome to the calculator, enter a mathematical expression or enter one of the following commands: \n" +
+                "Index - to display an index of available computations \n" +
+                "Search - to check if your desired computation is available \n" +
+                "Clear - to clear the calculator display\n" +
+                "Quit - to exit the calculator\n" +
+                "Set Base Mode - to set the current base between 1 and 36 (base 2 is binary, base 8 is octal, etc.) - default is 10\n" +
+                "Check Base Mode - check the current base\n" +
+                "NOTE: If you are working in a base above 10, use uppercase letters to represent the higher digits\n" +
+                "Set Trig Units - to set the units used for trig functions (degrees or radians) - default is radians\n" +
+                "Check Trig Units - check the current trig units being used\n" +
+                "Current Value - to display the current value (i.e., the last value evaluated)\n" +
+                "Reset Current Value - to reset the sign of the current value\n" +
+                "Invert - to invert the sign of the current value\n" +
+                "MC -  to clear the currently saved value from memory\n" +
+                "MC+ - to add the currently displayed value to memory\n" +
+                "MRC - to display the currently saved value to the console\n" +
+                "Welcome - to display this welcome message again (including list of commands)\n\n" +
+                "Instructions: To use the calculator, enter a mathematical expression, for example: (3 + 5) * 8 * sin(pi/2)\n" +
+                "The calculator will evaluate your expression and tell you the result. The example above\n" +
+                "would give you an answer of 64. Enter 'Index' for a list of available computations. Check\n" +
+                "above for other available commands. An invalid expression will return NaN.\n");
+    }
+
 }
 
