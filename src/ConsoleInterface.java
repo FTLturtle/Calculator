@@ -118,8 +118,9 @@ public class ConsoleInterface {
     /**
      * This will clear the screen by inputting 60 newlines
      */
-    private static void clearCommand(){
-        for(int i = 0; i < 60; i++) {
+
+    public static void clearCommand(){
+        for(int i = 0; i < 60; i++){
             System.out.println();
         }
     }
