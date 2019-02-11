@@ -23,20 +23,23 @@ public class ConsoleInterface {
         Calculator newCalc = new Calculator();
 
         System.out.println("Welcome to the calculator, enter a mathematical expression or enter one of the following commands: \n" +
-                "Index - to print an index of available computations \n" +
+                "Index - to display an index of available computations \n" +
                 "Search - to check if your desired computation is available \n" +
-                "Clear - to clear the calculator \n" +
+                "Clear - to clear the calculator display\n" +
                 "Quit - to exit the calculator\n" +
-                "Invert - to invert the sign of the value\n" +
                 "Set Base Mode - to set the current base between 1 and 36 (base 2 is binary, base 8 is octal, etc.) - default is 10\n" +
                 "Check Base Mode - check the current base\n" +
                 "NOTE: If you are working in a base above 10, use uppercase letters to represent the higher digits\n" +
                 "Set Trig Units - to set the units used for trig functions (degrees or radians) - default is radians\n" +
                 "Check Trig Units - check the current trig units being used\n" +
+                "Current Value - to display the current value (i.e., the last value evaluated)\n" +
+                "Reset Current Value - to reset the sign of the current value\n" +
+                "Invert - to invert the sign of the current value\n" +
                 "MC -  to clear the currently saved value from memory\n" +
                 "MC+ - to add the currently displayed value to memory\n" +
-                "MRC - to display the currently saved value to the console\n\n" +
-                "Instructions: To use the calculator, enter a mathematical expression, for example: (3 + 5) * 8\n" +
+                "MRC - to display the currently saved value to the console\n" +
+                "Welcome - to display this welcome message again (including list of commands)\n\n" +
+                "Instructions: To use the calculator, enter a mathematical expression, for example: (3 + 5) * 8 * sin(pi/2)\n" +
                 "The calculator will evaluate your expression and tell you the result. The example above\n" +
                 "would give you an answer of 64. Enter 'Index' for a list of available computations. Check\n" +
                 "above for other available commands. An invalid expression will return NaN.\n");
@@ -125,8 +128,9 @@ public class ConsoleInterface {
      * This will clear the screen by inputting 60 newlines
      */
     public static void clearCommand(){
-        for(int i = 0; i < 60; i++);
-        System.out.println();
+        for(int i = 0; i < 60; i++){
+            System.out.println();
+        }
     }
 }
 
