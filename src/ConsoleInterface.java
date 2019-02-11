@@ -36,7 +36,7 @@ public class ConsoleInterface {
                 "MC -  to clear the currently saved value from memory\n" +
                 "MC+ - to add the currently displayed value to memory\n" +
                 "MRC - to display the currently saved value to the console\n\n" +
-                "Instructions: To use the calculator, enter a mathematical expression, for example: (3 + 5) * 8\n" +
+                "Instructions: To use the calculator, enter a mathematical expression, for example: (3 + 5) * 8 * sin(pi/2)\n" +
                 "The calculator will evaluate your expression and tell you the result. The example above\n" +
                 "would give you an answer of 64. Enter 'Index' for a list of available computations. Check\n" +
                 "above for other available commands. An invalid expression will return NaN.\n");
