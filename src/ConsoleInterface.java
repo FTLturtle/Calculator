@@ -33,11 +33,11 @@ public class ConsoleInterface {
                 "Set Trig Units - to set the units used for trig functions (degrees or radians) - default is radians\n" +
                 "Check Trig Units - check the current trig units being used\n" +
                 "Current Value - to display the current value (i.e., the last value evaluated)\n" +
-                "Reset Current Value - to reset the sign of the current value\n" +
+                "Reset Current Value - to reset the current value to 0\n" +
                 "Invert - to invert the sign of the current value\n" +
-                "MC -  to clear the currently saved value from memory\n" +
+                "MC -  to reset the value saved in memory to 0\n" +
                 "MC+ - to add the currently displayed value to memory\n" +
-                "MRC - to display the currently saved value to the console\n" +
+                "MRC - to display the value saved in memory to the console\n" +
                 "Welcome - to display this welcome message again (including list of commands)\n\n" +
                 "Instructions: To use the calculator, enter a mathematical expression, for example: (3 + 5) * 8 * sin(pi/2)\n" +
                 "The calculator will evaluate your expression and tell you the result. The example above\n" +
